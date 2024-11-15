@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Loops: Task 2</title>
+    <style>
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+    <!-- <link rel="stylesheet" href="../styles.css" /> -->
+  </head>
+
+  <body>
+
+    <section class="preview">
+
+
+
+    </section>
+
+  </body>
+  <script>
+    const input = document.createElement('input');
+    input.setAttribute('type','search');
+    const button = document.createElement('button');
+    button.textContent = 'Search';
+    const para = document.createElement('p');
+
+    const phonebook = [
+      { name : 'Chris', number : '1549' },
+      { name : 'Li Kang', number : '9634' },
+      { name : 'Anne', number : '9065' },
+      { name : 'Francesca', number : '3001' },
+      { name : 'Mustafa', number : '6888' },
+      { name : 'Tina', number : '4312' },
+      { name : 'Bert', number : '7780' },
+      { name : 'Jada', number : '2282' },
+    ]
+
+    // Add your code here
+    button.addEventListener('click', ()=>{
+        const name = input.value;
+        if(name === ''){
+            para.textContent = 'A name is needed';
+        } else {
+            for(let i = 0; i < phonebook.length; i++){
+                if(phonebook[i].name.toLowerCase() === name.toLowerCase()){
+                    para.textContent = `${phonebook[i].name}'s number is ${phonebook[i].number}`;
+                    break;
+                } else if(phonebook[i].name.toLowerCase() !== name.toLowerCase()){
+                    para.textContent = 'Not found!'
+                }
+            }
+        }
+    })
+
+    // Don't edit the code below here!
+    const section = document.querySelector('section');
+    section.appendChild(input);
+    section.appendChild(button);
+    section.appendChild(para);
+  </script>
+
+</html>
