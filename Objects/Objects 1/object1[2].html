@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Object basics: Task 2</title>
+    <style>
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+
+  <body>
+    <section class="preview"></section>
+  </body>
+  <script>
+    let bandInfo;
+
+    // Add your code here
+    const band = {
+      name: "Despicable me",
+      nationality: "USA",
+      genre: "Cartoon",
+      members: 6,
+      formed: 2010,
+      split: false,
+      album: [
+        {
+          name: "Season 1",
+          released: 2010,
+        },
+        {
+          name: "Season 2",
+          released: 2013,
+        },
+        {
+          name: "Season 3",
+          released: 2017,
+        },
+        {
+          name: "Season 4",
+          released: 2024,
+        },
+      ],
+    };
+
+    bandInfo = `Favourite Movie not exactly a band, titled ${band.name},a ${band.nationality} movie i guess,it a ${band.genre} actually, about a family of ${band.members} individuals first realeased in year ${band.formed}`
+    // Don't edit the code below here!
+
+    const section = document.querySelector("section");
+    let para1 = document.createElement("p");
+    para1.textContent = bandInfo;
+    section.appendChild(para1);
+  </script>
+</html>
