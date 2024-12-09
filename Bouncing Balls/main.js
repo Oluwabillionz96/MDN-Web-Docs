@@ -26,6 +26,7 @@ class Ball {
     this.velY = velY;
     this.color = color;
     this.size = size;
+    this.exists = true;
   }
 
   draw() {
@@ -58,7 +59,7 @@ class Ball {
 
   collisionDetect() {
     for (const ball of balls) {
-      if (this !== ball) {
+      if (!(this === ball) && ball.exists) {
         const dx = this.x - ball.x;
         const dy = this.y - ball.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
@@ -103,7 +104,15 @@ function loop() {
 loop()
 
 class Shape extends Ball{
-    constructor(x, y, velX, velY) {
-        super(x,y,velX,velY)
+    constructor(x, y, velX, velY, color,size) {
+      super(x, y, velX, velY)
+      this.color = color;
+      this.size = size;
     }
+}
+
+class EvilCircle extends Shape{
+  constructor(x, y) {
+    super(x, y, 20, 20,'White',10);
+  }
 }
