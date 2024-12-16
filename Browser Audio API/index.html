@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <audio src="./javascript_apis_introduction_web-audio_outfoxing.mp3"></audio>
+
+    <button class="paused">Play</button>
+    <br />
+    <input
+      type="range"
+      min="0"
+      max="1"
+      step="0.01"
+      value="0.5"
+      class="volume"
+    />
+
+    <script>
+      const audioCtx = new AudioContext();
+      const audioElement = document.querySelector("audio");
+      const playBtn = document.querySelector("button");
+      const volumeSlider = document.querySelector(".volume");
+      const audioSource = audioCtx.createMediaElementSource(audioElement);
+
+      playBtn.addEventListener("click", () => {
+        if (audioCtx.state === "suspended") {
+          audioCtx.resume();
+        }
+
+        if (playBtn.textContent === "Play") {
+          audioElement.play();
+          //   playBtn.setAttribute("class", "playing");
+          playBtn.textContent = "pause";
+        } else if (playBtn.textContent === "pause") {
+          audioElement.pause();
+          playBtn.textContent = "Play";
+        }
+
+        audioElement.addEventListener("ended", () => {
+          playBtn.textContent = "Play";
+        });
+      });
+
+      const gainNode = audioCtx.createGain();
+
+      volumeSlider.addEventListener("input", () => {
+        gainNode.gain.value = volumeSlider.value;
+        console.log(volumeSlider.value);
+        audioSource;
+      });
+
+      audioSource.connect(gainNode).connect(audioCtx.destination);
+    </script>
+  </body>
+</html>
